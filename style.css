@@ -1,79 +1,159 @@
+/* --- CÀI ĐẶT CHUNG & HÌNH NỀN --- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    /* Sử dụng phông chữ đẹp, hiện đại, dễ đọc trên mọi thiết bị */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Tạo một hình nền gradient (chuyển màu) tinh tế */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    
+    /* Giữ nguyên cài đặt căn giữa */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
+
+/* --- KHUNG CHAT CHÍNH --- */
 .chat-container {
-    width: 400px;
+    width: 450px; /* Tăng nhẹ độ rộng */
     max-width: 90%;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    background: #fff;
+    
+    /* Đổ bóng mềm mại và đẹp hơn */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    background: #ffffff;
+    border-radius: 12px; /* Bo góc nhiều hơn */
+    
+    /* Quan trọng: để các góc bo được hiển thị đúng */
+    overflow: hidden; 
+    
     display: flex;
     flex-direction: column;
 }
+
+/* --- ĐẦU KHUNG CHAT (HEADER) --- */
 .chat-header {
-    background-color: #007bff;
+    /* Dùng màu gradient cho thanh tiêu đề */
+    background: linear-gradient(135deg, #007aff 0%, #00c6ff 100%);
     color: white;
-    padding: 10px 20px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    padding: 20px; /* Tăng padding */
+    text-align: center;
+    
+    /* Thêm bóng mờ cho chữ để nổi bật hơn */
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
+
 .chat-header h2 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    font-weight: 600; /* Chữ đậm vừa phải */
 }
+
+/* --- HỘP TIN NHẮN --- */
 .chat-box {
-    height: 400px;
+    height: 450px; /* Tăng chiều cao */
     overflow-y: auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    background-color: #f9f9f9; /* Màu nền hộp chat hơi xám nhẹ */
 }
+
+/* --- ĐỊNH DẠNG CÁC BONG BÓNG CHAT --- */
 .message {
-    padding: 10px 15px;
-    border-radius: 18px;
-    max-width: 80%;
+    padding: 12px 18px;
+    max-width: 75%;
     word-wrap: break-word;
+    line-height: 1.5; /* Giãn dòng dễ đọc hơn */
+    
+    /* Hiệu ứng tin nhắn xuất hiện mượt mà */
+    animation: fadeIn 0.3s ease-in-out;
 }
+
+/* Hiệu ứng khi tin nhắn xuất hiện */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bong bóng của Bot */
 .message.bot {
-    background-color: #e9ecef;
+    background-color: #e9ecef; /* Màu xám nhạt */
     color: #333;
     align-self: flex-start;
+    
+    /* Bo góc kiểu mới: 3 góc bo tròn, 1 góc không */
+    border-radius: 20px 20px 20px 5px;
 }
+
+/* Bong bóng của Người dùng */
 .message.user {
-    background-color: #007bff;
+    background-color: #007aff; /* Màu xanh dương hiện đại */
     color: white;
     align-self: flex-end;
+    
+    /* Bo góc kiểu mới, đối lập với bot */
+    border-radius: 20px 20px 5px 20px;
 }
+
+/* --- KHUNG NHẬP LIỆU --- */
 .chat-input {
     display: flex;
     border-top: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px 20px; /* Tăng padding */
+    background: #ffffff;
+    align-items: center; /* Căn giữa các mục theo chiều dọc */
 }
+
+/* Ô nhập liệu */
 .chat-input input {
     flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 18px;
-    padding: 10px 15px;
+    
+    /* Thiết kế "phẳng" (flat design) - bỏ viền */
+    border: none;
+    background-color: #f0f2f5; /* Màu nền xám nhạt */
+    
+    border-radius: 20px; /* Bo tròn (hình viên thuốc) */
+    padding: 12px 18px;
     font-size: 1rem;
-    outline: none;
+    outline: none; /* Bỏ viền xanh khi nhấp vào */
+    
+    /* Hiệu ứng chuyển động mượt */
+    transition: all 0.2s ease;
 }
+
+/* Hiệu ứng khi nhấp vào ô nhập liệu */
+.chat-input input:focus {
+    background-color: #e9ecef;
+    /* Thêm viền mỏng khi focus */
+    box-shadow: 0 0 0 2px #007aff; 
+}
+
+/* Nút Gửi */
 .chat-input button {
-    background-color: #007bff;
+    background-color: #007aff;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 18px;
+    padding: 12px 20px;
+    border-radius: 20px; /* Đồng bộ với ô input */
     margin-left: 10px;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 600; /* Chữ đậm */
+    
+    /* Hiệu ứng chuyển động mượt */
+    transition: background-color 0.2s ease;
 }
+
+/* Hiệu ứng khi di chuột qua nút Gửi */
 .chat-input button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Đổi màu đậm hơn */
 }
